@@ -193,15 +193,11 @@ function randomVector(){
 
     return {
 
-        x: randomInt(
-            -5,
-            5
-        ),
+        x: randomInt(-5,5),
 
-        y: randomInt(
-            -5,
-            5
-        )
+        y: randomInt(-5,5),
+
+        z: randomInt(-5,5)
 
     };
 }
@@ -250,30 +246,34 @@ function nextQuestion(){
     vectorB =
         randomVector();
 
-    correctAnswer =
+correctAnswer =
 
-        vectorA.x *
+    vectorA.x * vectorB.x
 
-        vectorB.x
+    +
 
-        +
+    vectorA.y * vectorB.y
 
-        vectorA.y *
+    +
 
-        vectorB.y;
+    vectorA.z * vectorB.z;
 
-    document
-        .getElementById(
-            "questionText"
-        )
-        .innerHTML =
+document
+    .getElementById(
+        "questionText"
+    )
+    .innerHTML =
 
 `
-A = (${vectorA.x}, ${vectorA.y})
+A = ⟨ ${vectorA.x},
+      ${vectorA.y},
+      ${vectorA.z} ⟩
 
 <br><br>
 
-B = (${vectorB.x}, ${vectorB.y})
+B = ⟨ ${vectorB.x},
+      ${vectorB.y},
+      ${vectorB.z} ⟩
 
 <br><br>
 
@@ -504,6 +504,12 @@ function handleWrong(){
 (${vectorA.y})
 ×
 (${vectorB.y})
+
++
+
+(${vectorA.z})
+×
+(${vectorB.z})
 
 =
 
